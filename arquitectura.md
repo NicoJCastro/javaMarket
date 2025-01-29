@@ -6,7 +6,7 @@
 │   │   ├── java
 │   │   │   └── com
 │   │   │       └── platzi
-│   │   │           └── market
+│   │   │           └── platzi market
 │   │   │               ├── domain
 │   │   │               │   ├── dto
 │   │   │               │   ├── repository
