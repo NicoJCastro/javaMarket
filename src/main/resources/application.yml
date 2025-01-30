@@ -2,7 +2,8 @@ spring:
   application:
     name: platzi-market
   profiles:
-    active: dev  # Aquí defines el perfil activo
+    active: dev  # Define que el perfil activo es "dev"
+
 server:
   servlet:
     context-path: /platzi-market/api
