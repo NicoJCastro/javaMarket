@@ -53,6 +53,7 @@ public class Producto {
 
     // Getters y setters
 }
+```
 
 En este ejemplo, la clase `Producto` es una entidad JPA que se mapeará directamente a una tabla en la base de datos.
 
