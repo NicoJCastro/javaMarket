@@ -13,6 +13,8 @@ public class ProductoRepository {
         return (List<Producto>) productoCrudRepository.findAll();
     }
 
+    // Query Methods are methods that are automatically implemented by Spring Data JPA
+
     public List<Producto> getByCategory(int idCategory) {
         return productoCrudRepository.findByIdCategoriaOrderByNombreAsc(idCategory);
     }
