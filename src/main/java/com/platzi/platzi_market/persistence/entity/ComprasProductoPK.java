@@ -30,4 +30,6 @@ public class ComprasProductoPK implements Serializable{
         this.idProducto = idProducto;
     } 
 
+    
+
 }
