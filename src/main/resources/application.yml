@@ -3,7 +3,18 @@ spring:
     name: platzi-market
   profiles:
     active: dev  # Define que el perfil activo es "dev"
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        '[format_sql]': true
 
 server:
   servlet:
     context-path: /platzi-market/api
+
+logging:
+  level:
+    '[org.springframework]': DEBUG
+    '[org.hibernate.SQL]': DEBUG
+    '[org.hibernate.type.descriptor.sql.BasicBinder]': TRACE
