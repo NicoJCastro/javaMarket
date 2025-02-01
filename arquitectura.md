@@ -1,4 +1,5 @@
 .
+```
 ├── paltzi-market.iml
 ├── pom.xml
 ├── src
@@ -30,6 +31,7 @@
 │               └── platzi
 │                   └── market
 │                       └── PaltziMarketApplicationTests.java
+```
 
 ### JPA
 
@@ -42,7 +44,7 @@ JPA (Java Persistence API) es una especificación de Java que proporciona un est
 - **Transacciones**: Manejo automático de transacciones de base de datos de manera declarativa.
 
 ### Ejemplo de Entidad JPA
-```Java
+```java
 @Entity
 public class Producto {
     @Id
@@ -57,13 +59,12 @@ public class Producto {
 
 En este ejemplo, la clase `Producto` es una entidad JPA que se mapeará directamente a una tabla en la base de datos.
 
-- La anotación `@Entity` indica que esta clase es una entidad gestionada por JPA.  
-- `@Id` define la clave primaria de la tabla.  
-- `@GeneratedValue(strategy = GenerationType.IDENTITY)` especifica que el valor del identificador será generado automáticamente por la base de datos.  
+- La anotación `@Entity` indica que esta clase es una entidad gestionada por JPA.
+- `@Id` define la clave primaria de la tabla.
+- `@GeneratedValue(strategy = GenerationType.IDENTITY)` especifica que el valor del identificador será generado automáticamente por la base de datos.
 
 JPA facilita la persistencia de datos en aplicaciones Java al abstraer la lógica de acceso a la base de datos.  
 Es ampliamente utilizado en el desarrollo empresarial y es compatible con distintos proveedores de persistencia, como **Hibernate, EclipseLink y OpenJPA**, que implementan esta especificación y ofrecen funcionalidades adicionales.
-
 
 #### Dominio vs Persistencia
 
@@ -88,3 +89,25 @@ Si tu código estuviera mal alineado al dominio, podrías haber hecho que la apl
 
 #### Inyección de Dependencias (DI)
 
+La Inyección de Dependencias (Dependency Injection, DI) es un patrón de diseño que permite a un objeto recibir sus dependencias de un objeto externo en lugar de crearlas por sí mismo. Esto promueve la separación de responsabilidades y facilita la prueba y el mantenimiento del código.
+
+### Conceptos Clave
+
+- **Dependencia**: Es cualquier objeto que una clase necesita para funcionar.
+- **Inyección**: Es el proceso de proporcionar las dependencias a una clase en lugar de que la clase las cree.
+
+### Tipos de Inyección de Dependencias
+
+1. **Constructor Injection**: Las dependencias se pasan a través del constructor de la clase.
+2. **Setter Injection**: Las dependencias se pasan a través de métodos setter.
+3. **Field Injection**: Las dependencias se inyectan directamente en los campos de la clase (menos recomendado por problemas de testabilidad).
+
+### Optional en Java
+
+**¿Qué es Optional?**
+
+Optional es una clase introducida en Java 8 como parte del paquete `java.util`. Su propósito principal es proporcionar una forma segura y elegante de manejar valores que pueden ser `null`, evitando así los temidos `NullPointerException`.
+
+**¿Por qué usar Optional?**
+
+Antes de Optional, cuando un método podía devolver un valor o `null`, el programador tenía que verificar manualmente si el valor era `null` antes de usarlo. Esto llevaba a código propenso a errores y menos legible. Con Optional, se encapsula el valor potencialmente nulo dentro de un contenedor, lo que permite manejar explícitamente el caso en que no haya valor disponible.
