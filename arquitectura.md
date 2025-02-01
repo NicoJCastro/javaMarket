@@ -63,3 +63,28 @@ En este ejemplo, la clase `Producto` es una entidad JPA que se mapeará directam
 
 JPA facilita la persistencia de datos en aplicaciones Java al abstraer la lógica de acceso a la base de datos.  
 Es ampliamente utilizado en el desarrollo empresarial y es compatible con distintos proveedores de persistencia, como **Hibernate, EclipseLink y OpenJPA**, que implementan esta especificación y ofrecen funcionalidades adicionales.
+
+
+#### Dominio vs Persistencia
+
+Cuando trabajas con arquitectura limpia o capas bien definidas, hay una separación clara entre la capa de dominio (la lógica del negocio) y la capa de persistencia (cómo se almacenan los datos en la base de datos).
+
+**Ejemplo en tu código:**
+
+Tienes dos clases clave:
+
+- **Product (Dominio):** Representa un producto en el negocio.
+- **Producto (Persistencia):** Representa cómo se almacena un producto en la base de datos.
+
+Si tu código estuviera mal alineado al dominio, podrías haber hecho que la aplicación trabajara directamente con `Producto` en todas partes. Eso significaría que toda la lógica del negocio dependería directamente de cómo están las tablas en la base de datos, lo cual no es bueno porque limita la flexibilidad.
+
+#### Beneficios de esta separación
+
+✔ Independencia de la base de datos: Si en el futuro decides cambiar de MySQL a MongoDB, solo necesitas cambiar la implementación de `ProductoRepository`, pero el resto de la aplicación seguirá funcionando igual.
+
+✔ Código más mantenible y flexible: La lógica del negocio se mantiene en `Product`, mientras que `Producto` solo es relevante para la base de datos.
+
+✔ Facilita pruebas unitarias: Puedes probar la lógica del negocio sin depender de la base de datos.
+
+#### Inyección de Dependencias (DI)
+
