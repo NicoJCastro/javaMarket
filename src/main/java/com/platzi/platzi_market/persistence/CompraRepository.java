@@ -12,6 +12,8 @@ import com.platzi.platzi_market.persistence.crud.CompraCrudRepository;
 import com.platzi.platzi_market.persistence.entity.Compra;
 import com.platzi.platzi_market.persistence.mapper.PurchaseMapper;
 
+import jakarta.transaction.Transactional;
+
 @Repository
 public class CompraRepository implements PurchaseRepository {
     @Autowired
@@ -32,10 +34,28 @@ public class CompraRepository implements PurchaseRepository {
     }
 
     @Override
-    public Purchase save(Purchase purchase) {
-        Compra compra = mapper.toCompra(purchase);
-        compra.getProductos().forEach(producto -> producto.setCompra(compra));
-        return mapper.toPurchase(compraCrudRepository.save(compra));
+@Transactional
+public Purchase save(Purchase purchase) {
+    if (purchase == null) {
+        throw new IllegalArgumentException("La compra no puede ser nula.");
     }
+
+    Compra compra = mapper.toCompra(purchase);
+    if (compra.getIdCompra() == null || compra.getIdCompra() == 0) {
+        // Es una nueva compra, asegúrate de que el ID sea nulo o 0
+        compra.setIdCompra(null);
+    }
+
+    if (compra.getProductos() != null) {
+        compra.getProductos().forEach(producto -> producto.setCompra(compra));
+    }
+
+    try {
+        Compra savedCompra = compraCrudRepository.save(compra);
+        return mapper.toPurchase(savedCompra);
+    } catch (Exception e) {
+        throw new RuntimeException("Error al guardar la compra: " + e.getMessage(), e);
+    }
+}
 
 }
