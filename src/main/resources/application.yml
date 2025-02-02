@@ -18,3 +18,8 @@ logging:
     '[org.springframework]': DEBUG
     '[org.hibernate.SQL]': DEBUG
     '[org.hibernate.type.descriptor.sql.BasicBinder]': TRACE
+
+# Configuración de SpringDoc OpenAPI (Swagger UI)
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html  # Define la ruta de acceso a Swagger UI
